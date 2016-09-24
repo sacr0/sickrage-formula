@@ -3,7 +3,9 @@
 
 include:
   - sickrage.package
+  - python.set_version27
 
+# start the sickrage process
 sickrage:
   service.running:
     - enable: True
@@ -11,9 +13,11 @@ sickrage:
     - require:
       - file: sickrage_service_file
       - sls: sickrage.package
+      - sls: python.set_version27
     - watch:
       - file: sickrage_service_config
 
+# create the sickrage service config file (default data to run the service)
 sickrage_service_config:
   file.managed:
     - name: {{ sickrage.service_config }}
@@ -22,6 +26,7 @@ sickrage_service_config:
     - require:
       - git: sickrage-git
 
+# create the service init file, load data from the service config file
 sickrage_service_file:
   file.managed:
     - name: {{ sickrage.service_file }}
