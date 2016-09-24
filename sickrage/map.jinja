@@ -1,0 +1,28 @@
+{% set sickrage = salt['grains.filter_by']({
+  'Debian': {
+    'pkgs': ['python','unrar','unzip'],
+    'git': 'https://github.com/SiCKRAGETV/SickRage',
+    'homedir': '/srv/sickrage/',
+    'service_config': '/etc/default/sickrage',
+    'service_config_src': 'salt://sickrage/files/debian/sickrage.default.jinja',
+    'service_file': ' /etc/init.d/sickrage',
+    'service_file_src': 'salt://sickrage/files/debian/sickrage.init.jinja',
+    'service': 'sickrage',
+    'user': 'sickrage',
+    'group': 'sickrage',
+    'piddir': '/var/run/sickrage/',
+  },
+  'Arch': {
+    'pkgs': ['python','unrar','unzip'],
+    'git': 'https://github.com/SiCKRAGETV/SickRage',
+    'homedir': '/srv/sickrage/',
+    'service_config': '/etc/conf.d/sickrage',
+    'service_config_src': 'salt://sickrage/files/systemd/sickrage.conf.jinja',
+    'service_file': ' /usr/lib/systemd/system/sickrage.service',
+    'service_file_src': 'salt://sickrage/files/systemd/sickrage.service.jinja',
+    'service': 'sickrage',
+    'user': 'sickrage',
+    'group': 'sickrage',
+    'piddir': '/var/run/sickrage/',
+  },
+}, grain='os_family', merge=salt['pillar.get']('sickrage:lookup')) %}

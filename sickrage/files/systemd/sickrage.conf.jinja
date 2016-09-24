@@ -1,0 +1,13 @@
+{% from "sickrage/map.jinja" import sickrage with context %}
+
+# Configuration file for sickrage daemon.
+
+# Path to sickrage configuration file.
+SR_CONF={{ sickrage.configdir }}sickrage.ini
+
+# Path to sickrage data directory.
+SR_DATA={{ sickrage.datadir }}
+
+# Path to sickrage PID file
+SR_PIDFILE={{ sickrage.piddir }}sickrage.pid
+
