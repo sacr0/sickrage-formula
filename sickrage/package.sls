@@ -29,6 +29,7 @@ sickrage_piddir:
     - require:
       - user: sickrage_user
 
+# clone the sickrage git repo
 sickrage-git:
   git.latest:
     - name: {{ sickrage.git }}
@@ -37,12 +38,21 @@ sickrage-git:
       - file: sickrage_homedir
       - pkg: git
 
+# install all required packages 
 sickrage_packages:
   pkg.installed:
     - pkgs:
       {%- for pkg in sickrage.pkgs %}
       - {{ pkg }}
       {%- endfor %}
+
+# use python pip to install additional python libaries 
+sickrage_packages_pip:
+  pip_state.installed:
+    - requirements: {{ sickrage.homedir }}requirements.txt
+    - require:
+      - git: sickrage-git
+      - pkg: sickrage_packages
 
 #create folders for the app to use for database and configuration
 sickrage_datadir:
