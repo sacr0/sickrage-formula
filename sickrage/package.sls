@@ -34,6 +34,7 @@ sickrage-git:
   git.latest:
     - name: {{ sickrage.git }}
     - target: {{ sickrage.homedir }}
+    - force_reset: True
     - require:
       - file: sickrage_homedir
       - pkg: git
