@@ -49,7 +49,7 @@ sickrage_packages:
 
 # use python pip to install additional python libaries 
 sickrage_packages_pip:
-  pip_state.installed:
+  pip.installed:
     - requirements: {{ sickrage.homedir }}requirements.txt
     - require:
       - git: sickrage-git
