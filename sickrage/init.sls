@@ -33,8 +33,8 @@ sickrage_service_file:
     - require:
       - file: sickrage_service_config
 
-# daemon-reload whenm unit file has changed  
-service.systemctl_reload
+# daemon-reload when unit file has changed  
+service.systemctl_reload:
   module.run:
     - onchanges:
       - file: sickrage_service_file

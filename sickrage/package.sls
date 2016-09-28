@@ -48,12 +48,12 @@ sickrage_packages:
       {%- endfor %}
 
 # use python pip to install additional python libaries 
-sickrage_packages_pip:
-  pip.installed:
-    - requirements: {{ sickrage.homedir }}requirements.txt
-    - require:
-      - git: sickrage-git
-      - pkg: sickrage_packages
+#sickrage_packages_pip:
+#  pip.installed:
+#    - requirements: {{ sickrage.homedir }}requirements.txt
+#    - require:
+#      - git: sickrage-git
+#      - pkg: sickrage_packages
 
 #create folders for the app to use for database and configuration
 sickrage_datadir:
