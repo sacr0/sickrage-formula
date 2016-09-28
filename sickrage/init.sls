@@ -12,6 +12,7 @@ sickrage:
     - name: {{ sickrage.service }}
     - require:
       - file: sickrage_service_file
+      - module: sickrage_systemctl_reload
       - sls: sickrage.package
       - sls: python.set_version27
     - watch:
@@ -34,7 +35,8 @@ sickrage_service_file:
       - file: sickrage_service_config
 
 # daemon-reload when unit file has changed  
-service.systemctl_reload:
+sickrage_systemctl_reload:
   module.run:
+    - name: service.systemctl_reload
     - onchanges:
       - file: sickrage_service_file
