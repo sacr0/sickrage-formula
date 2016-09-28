@@ -50,13 +50,12 @@ After=network.target
 
 [Service]
 EnvironmentFile={{ sickrage.service_config }}
+ExecStart=/usr/bin/python2.7 {{ sickrage.homedir }}SickBeard.py -q -d --nolaunch --config "${SR_CONF}" --datadir "${SR_DATA}"
+GuessMainPID=no
+Type=forking
 User={{ sickrage.user }}
 Group={{ sickrage.group }}
-
-Type=forking
-GuessMainPID=no
-ExecStart=/usr/bin/python2.7 {{ sickrage.homedir }}SickBeard.py --quiet --daemon --nolaunch --config "$SR_CONF" --datadir "$SR_DATA"
-PIDFile="$SR_PIDFILE"
+PIDFile="${SR_PIDFILE}"
 
 [Install]
 WantedBy=multi-user.target
