@@ -1,7 +1,7 @@
 {% set sickrage = salt['grains.filter_by']({
   'Debian': {
     'pkgs': ['python','unrar','unzip'],
-    'git': 'https://github.com/SiCKRAGETV/SickRage',
+    'git': 'https://github.com/SickRage/SickRage.git',
     'homedir': '/srv/sickrage/',
     'service_config': '/etc/default/sickrage',
     'service_config_src': 'salt://sickrage/files/debian/sickrage.default.jinja',
@@ -13,8 +13,8 @@
     'piddir': '/var/run/sickrage/',
   },
   'Arch': {
-    'pkgs': ['python','unrar','unzip','python2-pip'],
-    'git': 'https://github.com/SiCKRAGETV/SickRage',
+    'pkgs': ['python','unrar','unzip'],
+    'git': 'https://github.com/SickRage/SickRage.git',
     'homedir': '/opt/sickrage/',
     'datadir': '/var/opt/sickrage',
     'configdir': '/var/opt/sickrage',

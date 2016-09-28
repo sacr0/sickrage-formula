@@ -23,8 +23,6 @@ sickrage_service_config:
     - name: {{ sickrage.service_config }}
     - source: {{ sickrage.service_config_src }} 
     - template: jinja
-    - require:
-      - git: sickrage-git
 
 # create the service init file, load data from the service config file
 sickrage_service_file:
@@ -34,4 +32,9 @@ sickrage_service_file:
     - template: jinja
     - require:
       - file: sickrage_service_config
-      - git: sickrage-git
+
+# daemon-reload whenm unit file has changed  
+service.systemctl_reload
+  module.run:
+    - onchanges:
+      - file: sickrage_service_file

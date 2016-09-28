@@ -50,7 +50,7 @@ After=network.target
 
 [Service]
 EnvironmentFile={{ sickrage.service_config }}
-ExecStart=/usr/bin/python2.7 {{ sickrage.homedir }}SickBeard.py -q -d --nolaunch --config "${SR_CONF}" --datadir "${SR_DATA}"
+ExecStart=/usr/bin/python2.7 {{ sickrage.homedir }}SickBeard.py -q -d --nolaunch --config="${SR_CONF}" --datadir="${SR_DATA}"
 GuessMainPID=no
 Type=forking
 User={{ sickrage.user }}
