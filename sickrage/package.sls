@@ -60,9 +60,7 @@ sickrage_packages:
 sickrage_datadir:
   file.directory:
     - name: {{ sickrage.datadir }}
-    - mode: 777
 
 sickrage_configdir:
   file.directory:
     - name: {{ sickrage.configdir }}
-    - mode: 777
